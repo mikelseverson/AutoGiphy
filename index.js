@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 var app = express();
 
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
@@ -24,6 +25,9 @@ function sendTextMessage(sender, text) {
   });
 }
 
+app.use(bodyParser.json({ type: 'application/*+json' }))
+
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
@@ -36,7 +40,6 @@ app.get('/webhook', function (req, res) {
 })
 
 app.post('/webhook/', function (req, res) {
-  console.log(req.body);
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
