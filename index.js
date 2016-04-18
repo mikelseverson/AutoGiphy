@@ -1,6 +1,29 @@
 var express = require('express');
 var app = express();
 
+var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
+
+function sendTextMessage(sender, text) {
+  messageData = {
+    text:text
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
@@ -20,6 +43,7 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       // Handle a text message from this sender
+      sendTextMessage(sender, "echo: "+ text.substring(0, 200));
     }
   }
   res.sendStatus(200);
