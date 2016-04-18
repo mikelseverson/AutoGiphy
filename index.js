@@ -47,8 +47,7 @@ app.post('/webhook/', function (req, res) {
     sender = event.sender.id;
     if (event.message && event.message.text) {
       text = event.message.text;
-      // Handle a text message from this sender
-      console.log('text', text);
+      sendTextMessage(sender, "echo: " + text);
     }
   }
   res.sendStatus(200);
