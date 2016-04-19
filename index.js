@@ -82,7 +82,7 @@ app.post('/webhook/', function (req, res) {
 
 app.get("/*", (req, res, next) => {
     var file = req.params[0] || "index.html";
-    res.sendFile(path.join(__dirname, "../public", file));
+    res.sendFile(path.join(__dirname, "/public", file));
 });
 
 
