@@ -1,9 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var request = require('request');
+var gcm = require('node-gcm');
 var app = express();
 
+var pushSender = new gcm.Sender(AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M);
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
+var regTokens = ['cCXpUk-fNoA:APA91bHVbaFnoMSDHNMI_lU27Z_nuowUNxHscQCjYgElx6O3GvurzkbmnxHCOpTpMwn8qsKXPEiDvN--ZylBzMOYwPLAdr-ss0E4VtfzHlAPuhGdFtSsh5DRzLZdtW6jkyoQZ6cJmZQc'];
+
+
 
 function sendTextMessage(sender, text) {
   messageData = {
@@ -26,8 +31,19 @@ function sendTextMessage(sender, text) {
   });
 }
 
-app.use(bodyParser.json())
+function SendPushGCM(title, body) {
+  var message = new gcm.Message();
 
+  message.addNotification('title', title);
+  message.addNotification('body', body);
+
+  pushSender.send(message, regTokens, (err, response) => {
+    if(err) console.error(err);
+    else console.log(response);
+  });
+}
+
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -48,6 +64,7 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       console.log(sender, text);
+      pushSender("New FB Message", sender + ": " + text);
       sendTextMessage(sender, "echo: " + text);
     }
   }
