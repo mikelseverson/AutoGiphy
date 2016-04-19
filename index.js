@@ -4,7 +4,7 @@ var request = require('request');
 var gcm = require('node-gcm');
 var app = express();
 
-var pushSender = new gcm.Sender(AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M);
+var pushSender = new gcm.Sender('AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M');
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
 var regTokens = ['cCXpUk-fNoA:APA91bHVbaFnoMSDHNMI_lU27Z_nuowUNxHscQCjYgElx6O3GvurzkbmnxHCOpTpMwn8qsKXPEiDvN--ZylBzMOYwPLAdr-ss0E4VtfzHlAPuhGdFtSsh5DRzLZdtW6jkyoQZ6cJmZQc'];
 
