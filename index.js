@@ -7,7 +7,7 @@ var app = express();
 
 var pushSender = new gcm.Sender('AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M');
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
-var regTokens = ['cCXpUk-fNoA:APA91bHVbaFnoMSDHNMI_lU27Z_nuowUNxHscQCjYgElx6O3GvurzkbmnxHCOpTpMwn8qsKXPEiDvN--ZylBzMOYwPLAdr-ss0E4VtfzHlAPuhGdFtSsh5DRzLZdtW6jkyoQZ6cJmZQc', 'eSHEla97vwk:APA91bHGATFIIgzLZp0SB2-7VHKqr-2fSXYaSlL78GQIa7Xjtl80YIgk6JROxeaTJ-h7w2tnfIufEE0Uh9xF9bK999uGJ8m1ap1lgidaio8K__1SxWZoLmRoAcWJ8Q5BIzloSVJJJr--'];
+var regTokens = ['dfBg62BDGng:APA91bF_TzMWj6AZv518GNL5_BtiKD_3fWMIqg33vSsk33-V_uStHDQohoYtxydtj7mPCMr-pCwBarFqLtYStNzAMHirpphXFRjnoOIuwmM6gGVai8gDZ7Ff2mwS4Oq82j7s0rfk16QM'];
 
 var endpointData = {
   title: 'New FB Message',
