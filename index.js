@@ -80,7 +80,7 @@ app.post('/webhook/', function (req, res) {
   res.sendStatus(200);
 });
 
-router.get("/*", (req, res, next) => {
+app.get("/*", (req, res, next) => {
     var file = req.params[0] || "index.html";
     res.sendFile(path.join(__dirname, "../public", file));
 });
