@@ -8,7 +8,11 @@ var pushSender = new gcm.Sender('AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M');
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
 var regTokens = ['cCXpUk-fNoA:APA91bHVbaFnoMSDHNMI_lU27Z_nuowUNxHscQCjYgElx6O3GvurzkbmnxHCOpTpMwn8qsKXPEiDvN--ZylBzMOYwPLAdr-ss0E4VtfzHlAPuhGdFtSsh5DRzLZdtW6jkyoQZ6cJmZQc'];
 
-
+var endpointData = {
+  title: 'New FB Message',
+  message: 'no message data',
+  link: 'https://mikelseverson.com'
+}
 
 function sendTextMessage(sender, text) {
   messageData = {
@@ -31,16 +35,19 @@ function sendTextMessage(sender, text) {
   });
 }
 
-function sendPushMessage(title, body) {
+function sendPushMessage() {
   var message = new gcm.Message();
 
-  message.addNotification('title', title);
-  message.addNotification('body', body);
-  message.addNotification('link', 'https://mikelseverson.com');
   pushSender.send(message, regTokens, (err, response) => {
     if(err) console.error(err);
     else console.log(response);
   });
+}
+
+function updateEndpoint(data) {
+  if(data.title) endpointData.title = data.title;
+  if(data.message) endpointData.message = data.message;
+  if(data.link) endpointData.link = data.link;
 }
 
 app.use(bodyParser.json())
@@ -64,7 +71,9 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       console.log(sender, text);
-      sendPushMessage("New FB Message", sender + ": " + text);
+
+      updateEndpoint({message: sender + ": " + text})
+      sendPushMessage();
       sendTextMessage(sender, "echo: " + text);
     }
   }
