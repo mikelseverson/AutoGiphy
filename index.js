@@ -1,5 +1,6 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var path = require('path');
 var request = require('request');
 var gcm = require('node-gcm');
 var app = express();
@@ -52,9 +53,6 @@ function updateEndpoint(data) {
 
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 app.get('/endpoint', (req, res) => {
   res.json(endpointData);
 })
@@ -81,5 +79,11 @@ app.post('/webhook/', function (req, res) {
   }
   res.sendStatus(200);
 });
+
+router.get("/*", (req, res, next) => {
+    var file = req.params[0] || "index.html";
+    res.sendFile(path.join(__dirname, "../public", file));
+});
+
 
 app.listen(process.env.PORT || 3000);
