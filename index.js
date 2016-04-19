@@ -12,6 +12,9 @@ var regTokens = ['dfBg62BDGng:APA91bF_TzMWj6AZv518GNL5_BtiKD_3fWMIqg33vSsk33-V_u
 var endpointData = {
   title: 'New FB Message',
   message: 'no message data',
+  image: {
+    url: '/fbpush.jpg'
+  },
   link: 'https://mikelseverson.com'
 }
 
