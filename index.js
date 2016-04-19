@@ -31,7 +31,7 @@ function sendTextMessage(sender, text) {
   });
 }
 
-function SendPushGCM(title, body) {
+function sendPushMessage(title, body) {
   var message = new gcm.Message();
 
   message.addNotification('title', title);
@@ -64,7 +64,7 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       console.log(sender, text);
-      pushSender("New FB Message", sender + ": " + text);
+      sendPushMessage("New FB Message", sender + ": " + text);
       sendTextMessage(sender, "echo: " + text);
     }
   }
