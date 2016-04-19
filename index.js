@@ -36,7 +36,7 @@ function sendPushMessage(title, body) {
 
   message.addNotification('title', title);
   message.addNotification('body', body);
-
+  message.addNotification('link', 'https://mikelseverson.com');
   pushSender.send(message, regTokens, (err, response) => {
     if(err) console.error(err);
     else console.log(response);
