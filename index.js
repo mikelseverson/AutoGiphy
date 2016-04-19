@@ -55,7 +55,9 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
+app.get('/endpoint', (req, res) => {
+  res.json(endpointData);
+})
 app.get('/webhook', function (req, res) {
   if (req.query['hub.verify_token'] === 'super-gipfy-secret') {
     res.send(req.query['hub.challenge']);
