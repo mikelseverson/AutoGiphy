@@ -5,6 +5,8 @@ var request = require('request');
 var gcm = require('node-gcm');
 var app = express();
 
+require('@risingstack/trace');
+
 var pushSender = new gcm.Sender('AIzaSyBbq7xy6Y8TFivbPPAgDShaAVWi4_KuT6M');
 var token = "CAAKN2CoQPMoBAFPfZC9R09PetZCgB6TS5f76iWR72xicgsgMOZAJ4HbsZAo1pZBHxCpwdctPZAscnjIlnZCStQyvkB1uS8AykNLZBj2LS0ZB1JQgQNMYSik1YenHwjaLh7DZBG6XU0QuZCnHfzZALxIlg2fEGwvrlgBOleibtFoqakZBTztXZBGoWOXJ2JQzfjy3g08bEZD";
 var regTokens = ['dfBg62BDGng:APA91bF_TzMWj6AZv518GNL5_BtiKD_3fWMIqg33vSsk33-V_uStHDQohoYtxydtj7mPCMr-pCwBarFqLtYStNzAMHirpphXFRjnoOIuwmM6gGVai8gDZ7Ff2mwS4Oq82j7s0rfk16QM'];
