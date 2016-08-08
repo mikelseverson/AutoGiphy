@@ -1,2 +1,2 @@
 # AutoGiphy
-replying bot
+replying facebook bot
