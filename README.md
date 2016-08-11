@@ -1,2 +1,2 @@
-# AutoGiphy
-The replying facebook bot
+# Echo
+The echo replying facebook bot
