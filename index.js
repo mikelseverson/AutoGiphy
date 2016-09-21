@@ -90,5 +90,4 @@ app.get("/*", (req, res, next) => {
     res.sendFile(path.join(__dirname, "/public", file));
 });
 
-
 app.listen(process.env.PORT || 3000);
