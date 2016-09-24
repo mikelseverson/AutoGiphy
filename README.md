@@ -1,2 +1,2 @@
 # Facebook Echo bot
-The echo replying Facebook bot replies to any message it receives.
+a Node.JS using Facebook API that repeats all messages received.
