@@ -1,2 +1,2 @@
 # Facebook Echo bot
-Node.JS using Facebook API to repeat all messages received.
+Node.JS application using Facebook API to repeat all messages received.H
